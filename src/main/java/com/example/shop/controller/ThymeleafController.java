@@ -16,9 +16,11 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/thymeleaf")
 public class ThymeleafController {
+
     @GetMapping (value = "/ex01")
      public String ThymeLeafExample01(Model model){
         model.addAttribute("data", "타임리프 예제입니다.");
+        model.addAttribute("message", "<strong>굵은글씨</strong>");
         return  "thymeleafEx/thymeleafEx01";
      }
 
@@ -76,6 +78,14 @@ public class ThymeleafController {
         model.addAttribute("param1", p1);
         model.addAttribute("param2", p2);
         return "thymeleafEx/thymeleafEx06";
+    }
+    @GetMapping("/ex07")
+    public String ThymeLeafExample07(){
+        return "thymeleafEx/thymeleafEx07";
+    }
+    @GetMapping("/ex07_1")
+    public String ThymeLeafExample07_1(){
+        return "thymeleafEx/thymeleafEx07_1";
     }
 
 }
