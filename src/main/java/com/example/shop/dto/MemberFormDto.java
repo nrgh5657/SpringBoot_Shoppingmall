@@ -1,19 +1,30 @@
 package com.example.shop.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.Length;
 
 @Getter
+@Setter
 @Slf4j
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class MemberFormDto {
+    @NotBlank(message = "이름을 필수 입력값입니다.")
     private String name;
+
+    @NotEmpty(message = "이메일은 필수 입력값입니다.")
+    @Email(message="이메일 형식으로 입력해 주세요")
     private String email;
+
+    @NotEmpty(message = "비밀번호는 필수 입력값 입니다.")
+    @Length(min=4,max=8, message = "비밀번호는 4자이상, 8자 이하로 입력해 주세요")
     private String password;
+
+    @NotEmpty(message = "주소는 필수 입력값 입니다.")
     private String address;
 }
