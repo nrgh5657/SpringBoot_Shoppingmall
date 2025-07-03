@@ -9,11 +9,11 @@ import lombok.ToString;
 @Getter@Setter
 @ToString
 @Table
-public class CartItem {
+public class CartItem extends BaseEntity {
     @Id
     @GeneratedValue
     @Column(name="cart_item_id")
-    private Long cartItemId;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="cart_id")
@@ -24,4 +24,19 @@ public class CartItem {
     private Item item;
 
     private int count; //카트에 담은 상품개수
+
+    public static CartItem createCartItem(Cart cart, Item item, int count) {
+        CartItem cartItem = new CartItem();
+        cartItem.setCart(cart);
+        cartItem.setItem(item);
+        cartItem.setCount(count);
+        return cartItem;
+    }
+
+    public void addCount(int count) {
+        this.count += count;
+    }
+    public void updateCount(int count) {
+        this.count = count;
+    }
 }

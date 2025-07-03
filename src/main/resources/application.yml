@@ -10,7 +10,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL8Dialect
     properties:
       hibernate:
@@ -26,6 +26,16 @@ spring:
   thymeleaf:
     cache: false
 
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
+
+#상품 이미지 업로드 경로
+itemImgLocation: c:/shop/item
+
+#리소스 이미지 업로드
+uploadPath: file:///C:/shop/
 
 #쿼리에 물음표로 출련되는 바인드 파라미터 출력
 logging:
